@@ -1,0 +1,30 @@
+.editor_container {
+  position: relative;
+}
+
+.editor {
+  margin-top: 1em;
+  padding: 0.5em 1.5em;
+  border-radius: 0.5em;
+  background: white;
+}
+
+.textarea {
+  outline: 0;
+}
+
+.placeholder {
+  position: absolute;
+  top: 1.5em;
+  left: 1.5em;
+}
+
+[class="debug-treetype-button"],
+[class="debug-timetravel-button"] {
+  display: none;
+}
+
+[class="tree-view-output"] {
+  margin-top: 1em;
+  padding: 1em;
+}

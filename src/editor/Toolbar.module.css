@@ -1,0 +1,14 @@
+.block_type_select {
+  width: 120px;
+  margin-right: 0.5em;
+}
+
+.button,
+.button:focus {
+  border: 0;
+  outline: 0;
+}
+
+.button[aria-checked="true"] {
+  background-color: lightgray;
+}
