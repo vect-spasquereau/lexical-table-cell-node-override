@@ -12,7 +12,6 @@ function App() {
     HeadingNode,
     ParagraphNode,
     TableNode,
-    TableCellNode,
     TableRowNode,
     TextNode,
     ExtendedTableCellNode,
