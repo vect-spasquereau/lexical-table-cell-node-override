@@ -3,7 +3,6 @@ import {
   TableCellHeaderStates,
   TableCellNode,
 } from "@lexical/table";
-import { addClassNamesToElement } from "@lexical/utils";
 import { EditorConfig, LexicalNode, NodeKey, Spread } from "lexical";
 
 export type TableCellHeaderState =
@@ -55,11 +54,12 @@ export class ExtendedTableCellNode extends TableCellNode {
     return {
       ...super.exportJSON(),
       customProperty: this.__customProperty,
-      type: "extended-tablecell",
+      type: this.getType(),
+      version: 1,
     };
   }
 
-  static clone(node: ExtendedTableCellNode): ExtendedTableCellNode {
+  static clone(node: TableCellNode): TableCellNode {
     const cellNode = new ExtendedTableCellNode(
       node.__headerState,
       node.__colSpan,
@@ -73,31 +73,8 @@ export class ExtendedTableCellNode extends TableCellNode {
   }
 
   createDOM(config: EditorConfig): HTMLElement {
-    console.log("create dom?");
-    const element = document.createElement(
-      this.getTag()
-    ) as HTMLTableCellElement;
-
-    if (this.__width) {
-      element.style.width = `${this.__width}px`;
-    }
-    if (this.__colSpan > 1) {
-      element.colSpan = this.__colSpan;
-    }
-    if (this.__rowSpan > 1) {
-      element.rowSpan = this.__rowSpan;
-    }
-    if (this.__backgroundColor !== null) {
-      element.style.backgroundColor = this.__backgroundColor;
-    }
-
-    addClassNamesToElement(
-      element,
-      config.theme.tableCell,
-      this.hasHeader() && config.theme.tableCellHeader
-    );
-
-    return element;
+    const dom = super.createDOM(config);
+    return dom;
   }
 }
 
